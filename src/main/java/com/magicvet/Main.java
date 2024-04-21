@@ -13,6 +13,8 @@ public class Main {
 
     static  String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
+    static String NAME_PATTERN = "[a-zA-Z]{3,}(-[a-zA-Z]{3,})?$";
+
     public static void main(String[] args) {
         run();
 
@@ -59,17 +61,31 @@ public class Main {
         client.email = email;
 
         System.out.println("First name: ");
-        client.firstName = SCANNER.nextLine();
+        String firstName = SCANNER.nextLine();
+        while (!isNameValid(firstName)){
+            System.out.println("Invalid first name format. Please, enter again: ");
+            firstName = SCANNER.nextLine();
+        }
+        client.firstName = firstName;
 
         System.out.println("Last name: ");
-        client.lastName = SCANNER.nextLine();
-
+        String lastName = SCANNER.nextLine();
+        while (!isNameValid(lastName)) {
+            System.out.println("Invalid last name format. Please, enter again: ");
+            lastName = SCANNER.nextLine();
+        }
+        client.lastName = lastName;
         return client;
     }
 
    static boolean isEmailValid(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    static boolean isNameValid(String name) {
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
 }
