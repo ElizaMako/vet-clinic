@@ -5,6 +5,11 @@ import main.java.com.magicvet.model.Pet;
 import main.java.com.magicvet.service.ClientService;
 import main.java.com.magicvet.service.PetService;
 
+import java.util.Objects;
+
+
+import static main.java.com.magicvet.Main.SCANNER;
+
 public class ApplicationRunner {
 
     private ClientService clientService = new ClientService();
@@ -16,12 +21,18 @@ public class ApplicationRunner {
           Client client = clientService.registerNewClient();
 
           if (client != null) {
-              System.out.println("Adding a new pet.");
 
-              Pet pet = petService.registerNewPet();
-              client.setPet(pet);
-              pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
-              System.out.println("Pet has been added");
+           System.out.println("Do you want to add a new pet?(yes / no)");
+           String permission = SCANNER.nextLine();
+
+              if(Objects.equals(permission, "yes")) {
+                  System.out.println("Adding a new pet.");
+
+                  Pet pet = petService.registerNewPet();
+                  client.setPet(pet);
+                  pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+                  System.out.println("Pet has been added");
+              }
           }
         }
     }
