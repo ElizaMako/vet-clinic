@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
 
 public class ClientService {
 
-    private static  String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
-   private static String NAME_PATTERN = "[a-zA-Z]{3,}(-[a-zA-Z]{3,})?$";
+   private static final String NAME_PATTERN = "[a-zA-Z]{3,}(-[a-zA-Z]{3,})?$";
 
     public Client registerNewClient() {
 
@@ -51,7 +51,7 @@ public class ClientService {
             System.out.println("Invalid last name format. Please, enter again: ");
             lastName = Main.SCANNER.nextLine();
         }
-        client.setLastName(lastName); ;
+        client.setLastName(lastName);
         return client;
     }
 

@@ -12,9 +12,9 @@ import static main.java.com.magicvet.Main.SCANNER;
 
 public class ApplicationRunner {
 
-    private ClientService clientService = new ClientService();
+    private final ClientService clientService = new ClientService();
 
-    private PetService petService = new PetService();
+    private final PetService petService = new PetService();
 
     public  void run() {
         if(Authenticator.auth()) {
@@ -32,6 +32,8 @@ public class ApplicationRunner {
                   client.setPet(pet);
                   pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
                   System.out.println("Pet has been added");
+
+                  System.out.println(client);
               }
           }
         }
