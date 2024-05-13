@@ -10,10 +10,12 @@ public class Dog extends Pet {
         this.size = size;
     }
 
+   /*
     public String getSize() {
         return size;
     }
-    @Override
+   */
+   @Override
     public String toString() {
         return "Client {"
                 + "\n\tsize = " + size;
