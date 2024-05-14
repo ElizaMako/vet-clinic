@@ -24,5 +24,23 @@ public class Sandbox {
             System.out.println(dog.getSize());
         }
 
+        Dog[] dogsAge = {
+                new Dog(Dog.S,"2"),
+                new Dog(Dog.XL, "5"),
+                new Dog(Dog.M, "1"),
+                new Dog(Dog.XL, "10"),
+                new Dog(Dog.S,"3"),
+                new Dog(Dog.XL, "2"),
+                new Dog(Dog.S,"6"),
+        };
+
+        Arrays.sort(dogsAge);
+        System.out.println("Sorting dogs by age: ");
+
+        for (Dog dog : dogsAge) {
+
+            System.out.println(dog.getAge());
+        }
+
     }
 }

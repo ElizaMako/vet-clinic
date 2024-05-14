@@ -2,7 +2,7 @@ package main.java.com.magicvet.model;
 
 import java.util.Objects;
 
-public class Dog extends Pet {
+public class Dog extends Pet implements Comparable<Dog> {
 
     public static final String XS = "XS";
     public static final String S = "S";
@@ -14,8 +14,17 @@ public class Dog extends Pet {
 
     private String size;
 
+    private String age;
+
+
+
 
     public Dog() { }
+
+    public Dog(String size, String age) {
+        this.size = size;
+        this.age = age;
+    }
 
     public Dog(String size) {
         this.size = size;
@@ -46,5 +55,26 @@ public class Dog extends Pet {
     @Override
     public int hashCode() {
         return Objects.hashCode(size);
+    }
+
+
+    @Override
+    public String getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Dog otherDog) {
+
+        int thisAge = Integer.parseInt(this.getAge());
+
+        int otherAge = Integer.parseInt(otherDog.getAge());
+
+        return Integer.compare(thisAge, otherAge);
     }
 }
