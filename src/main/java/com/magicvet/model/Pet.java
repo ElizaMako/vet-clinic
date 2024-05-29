@@ -2,7 +2,10 @@ package main.java.com.magicvet.model;
 
 import java.util.Objects;
 
-public abstract class Pet {
+public  class Pet {
+
+    private HealthState healthState;
+
     private String type;
 
     private String sex;
@@ -12,6 +15,12 @@ public abstract class Pet {
     private String name;
 
     private String ownerName;
+
+    public Pet(){}
+
+    public Pet(HealthState healthState) {
+        this.healthState = healthState;
+    }
 
     @Override
     public String toString() {
@@ -79,5 +88,34 @@ public abstract class Pet {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public HealthState getHealthState() {
+        return healthState;
+    }
+
+    public void setHealthState(HealthState healthState) {
+        this.healthState = healthState;
+    }
+
+    public enum HealthState {
+
+        URGENT(1),
+        BAD(2),
+        MODERATELY(3),
+        GOOD(4),
+        HEALTHY(5)
+        ;
+
+
+        private final int value;
+
+        HealthState(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }

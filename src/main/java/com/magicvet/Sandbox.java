@@ -1,6 +1,7 @@
 package main.java.com.magicvet;
 
 import main.java.com.magicvet.model.Dog;
+import main.java.com.magicvet.model.Pet;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -8,6 +9,34 @@ import java.util.Comparator;
 public class Sandbox {
 
     public static void main(String[] args) {
+
+        Pet[] healthStates = {
+                new Pet(Pet.HealthState.BAD),
+                new Pet(Pet.HealthState.GOOD),
+                new Pet(Pet.HealthState.BAD),
+                new Pet(Pet.HealthState.HEALTHY),
+                new Pet(Pet.HealthState.URGENT),
+                new Pet(Pet.HealthState.BAD),
+                new Pet(Pet.HealthState.MODERATELY),
+                new Pet(Pet.HealthState.BAD),
+                new Pet(Pet.HealthState.BAD),
+                new Pet(Pet.HealthState.HEALTHY),
+                new Pet(Pet.HealthState.BAD),
+        };
+
+        Arrays.sort(healthStates, new Comparator<Pet>() {
+            @Override
+            public int compare(Pet o1, Pet o2) {
+                return o1.getHealthState().getValue() - o2.getHealthState().getValue();
+            }
+        });
+
+        System.out.println("Sorted dogs by health state: ");
+
+        for (Pet pet : healthStates) {
+
+            System.out.println(pet.getHealthState());
+        }
 
         Dog[] dogs = {
                 new Dog(Dog.Size.S),
