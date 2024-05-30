@@ -5,15 +5,24 @@ import java.util.Objects;
 public class Dog extends Pet implements Comparable<Dog> {
 
 
-
     private Size size;
 
     private String age;
 
+    @Override
+    public HealthState getHealthState() {
+        return healthState;
+    }
+
+    private HealthState healthState;
 
 
 
     public Dog() { }
+
+    public Dog(HealthState healthState) {
+        this.healthState = healthState;
+    }
 
     public Dog(Size size, String age) {
         this.size = size;

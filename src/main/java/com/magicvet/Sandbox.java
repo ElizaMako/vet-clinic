@@ -1,5 +1,6 @@
 package main.java.com.magicvet;
 
+import main.java.com.magicvet.model.Cat;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
 
@@ -11,17 +12,21 @@ public class Sandbox {
     public static void main(String[] args) {
 
         Pet[] healthStates = {
-                new Pet(Pet.HealthState.BAD),
-                new Pet(Pet.HealthState.GOOD),
-                new Pet(Pet.HealthState.BAD),
-                new Pet(Pet.HealthState.HEALTHY),
-                new Pet(Pet.HealthState.URGENT),
-                new Pet(Pet.HealthState.BAD),
-                new Pet(Pet.HealthState.MODERATELY),
-                new Pet(Pet.HealthState.BAD),
-                new Pet(Pet.HealthState.BAD),
-                new Pet(Pet.HealthState.HEALTHY),
-                new Pet(Pet.HealthState.BAD),
+
+                new Dog(Dog.HealthState.HEALTHY),
+                new Dog(Dog.HealthState.BAD),
+                new Dog(Dog.HealthState.HEALTHY),
+                new Dog(Dog.HealthState.URGENT),
+                new Dog(Dog.HealthState.HEALTHY),
+                new Dog(Dog.HealthState.MODERATELY),
+                new Dog(Dog.HealthState.BAD),
+                new Dog(Dog.HealthState.URGENT),
+                new Dog(Dog.HealthState.HEALTHY),
+                new Dog(Dog.HealthState.MODERATELY),
+                new Dog(Dog.HealthState.HEALTHY),
+                new Dog(Dog.HealthState.BAD),
+
+
         };
 
         Arrays.sort(healthStates, new Comparator<Pet>() {
@@ -54,6 +59,8 @@ public class Sandbox {
             }
         });
 
+        System.out.println("Sorted pets by size:");
+
         for (Dog dog : dogs) {
             System.out.println(dog.getSize());
         }
@@ -76,5 +83,9 @@ public class Sandbox {
             System.out.println(dog.getAge());
         }
 
+        System.out.println(new Cat());
+
     }
+
+
 }
