@@ -1,8 +1,16 @@
 package main.java.com.magicvet.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MMMM-dd HH:mm");
+
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
 
    private String firstName;
@@ -11,7 +19,10 @@ public class Client {
 
    private String email;
 
-   private Pet pet;
+   private List<Pet> pets = new ArrayList<>(); // якщо поле не буде ініціалізоване, то виникне NullPointerException.
+                                               // У випадку ініціалізації pets = new ArrayList<>();, впевнені, що pets не буде null, і виклик pets.add(pet); буде успішним
+                                             // Операції, такі як перевірка розміру списку (pets.size()), отримання елементів (pets.get(index)), ітерація по списку, також будуть безпечними,
+                                              // оскільки ви працюєте з порожнім, але дійсним об'єктом ArrayList, а не з null
 
    @Override
    public String toString() {
@@ -19,7 +30,8 @@ public class Client {
                + "\n\tfirstName = " + firstName
                + ", lastName = " + lastName
                + ", email = " + email
-               +",\n\tpet = " + pet
+               + ",\n\tpets = " + pets
+               + "\n\tregistrationDate = " + registrationDate.format(FORMATTER)
                + "\n";
    }
 
@@ -32,12 +44,12 @@ public class Client {
         return Objects.equals(firstName, client.firstName)
                 && Objects.equals(lastName, client.lastName)
                 && Objects.equals(email, client.email)
-                && Objects.equals(pet, client.pet);
+                && Objects.equals(pets, client.pets);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, pet);
+        return Objects.hash(firstName, lastName, email, pets);
     }
 
     public void setFirstName(String firstName) {
@@ -64,11 +76,15 @@ public class Client {
         return email;
     }
 
-    public Pet getPet() {
-        return pet;
+    public List<Pet> getPet() {
+        return pets;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPet(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public void addPet(Pet pet) {
+       pets.add(pet);
     }
 }

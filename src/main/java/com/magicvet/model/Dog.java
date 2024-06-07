@@ -44,8 +44,11 @@ public class Dog extends Pet implements Comparable<Dog> {
    */
    @Override
     public String toString() {
-        return "Client {"
-                + "\n\tsize = " + size;
+       return "Client {"
+               + "type = " + getType()
+               + ", sex = "  + getSex()
+               + ", age = " + getAge()
+               + "\n\tsize = " + size;
 
     }
 
