@@ -52,6 +52,10 @@ public class ClientService {
             lastName = Main.SCANNER.nextLine();
         }
         client.setLastName(lastName);
+
+        System.out.println("Location ");
+        String location = Main.SCANNER.nextLine();
+        client.setLocation(Client.Location.valueOf(location));
         return client;
     }
 

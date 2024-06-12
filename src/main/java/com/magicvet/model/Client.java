@@ -24,14 +24,18 @@ public class Client {
                                              // Операції, такі як перевірка розміру списку (pets.size()), отримання елементів (pets.get(index)), ітерація по списку, також будуть безпечними,
                                               // оскільки ви працюєте з порожнім, але дійсним об'єктом ArrayList, а не з null
 
-   @Override
+   private Location location;
+
+    @Override
    public String toString() {
        return "Client {"
                + "\n\tfirstName = " + firstName
                + ", lastName = " + lastName
                + ", email = " + email
+               + ", location = " + location
                + ",\n\tpets = " + pets
                + "\n\tregistrationDate = " + registrationDate.format(FORMATTER)
+
                + "\n";
    }
 
@@ -76,15 +80,27 @@ public class Client {
         return email;
     }
 
-    public List<Pet> getPet() {
+    public List<Pet> getPets() {
         return pets;
     }
 
-    public void setPet(List<Pet> pets) {
+    public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
 
     public void addPet(Pet pet) {
        pets.add(pet);
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public enum Location {
+       KYIV, LVIV, ODESA
     }
 }

@@ -28,14 +28,15 @@ public abstract class Pet {
 
     @Override
     public String toString() {
-        return "Client {"
-                + "\n\ttype = " + type
-                + ", sex = " + sex
-                + ", age = " + age
-                + ",\n\tname = " + name
-                + ",\n\towner`s name = " + ownerName
-                + ", registrationDate = " + registrationDate.format(FORMATTER)
-                + "\n}";
+        return "Pet {" +
+                "type = " + type +
+                ", name = " + name +
+                ", sex = " + sex +
+                ", age = " + age +
+                ", health = " + healthState +
+                ", ownerName = " + ownerName +
+                ", registrationDate = " + registrationDate.format(FORMATTER) +
+                "}";
     }
 
     @Override

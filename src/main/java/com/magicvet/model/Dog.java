@@ -1,13 +1,19 @@
 package main.java.com.magicvet.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Dog extends Pet implements Comparable<Dog> {
 
 
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+
     private Size size;
 
     private String age;
+
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
     @Override
     public HealthState getHealthState() {
@@ -43,14 +49,18 @@ public class Dog extends Pet implements Comparable<Dog> {
     }
    */
    @Override
-    public String toString() {
-       return "Client {"
-               + "type = " + getType()
-               + ", sex = "  + getSex()
-               + ", age = " + getAge()
-               + "\n\tsize = " + size;
-
-    }
+   public String toString() {
+       return "Pet {" +
+               "type = " + getType() +
+               ", name = " + getName() +
+               ", sex = " + getSex() +
+               ", age = " + getAge() +
+               ", size = " + getSize() +
+               ", health = " + getHealthState() +
+               ", ownerName = " + getOwnerName() +
+               ", registrationDate = " +  registrationDate.format(FORMATTER) +
+               "}";
+   }
 
     @Override
     public boolean equals(Object o) {
