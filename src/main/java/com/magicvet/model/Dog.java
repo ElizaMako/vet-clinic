@@ -7,8 +7,6 @@ import java.util.Objects;
 public class Dog extends Pet implements Comparable<Dog> {
 
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-
     private Size size;
 
     private String age;
@@ -114,6 +112,16 @@ public class Dog extends Pet implements Comparable<Dog> {
 
        Size(int value) {
            this.value = value;
+       }
+
+       public static Size fromString(String value) {
+           for (Size size : values()) {
+               if (size.toString().equals(value)) {
+                   return size;
+               }
+           }
+           System.out.println("Unable to parse value `" + value + "`. Using default value: " + UNKNOWN);
+           return UNKNOWN;
        }
 
         public int getValue() {
